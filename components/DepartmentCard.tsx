@@ -26,6 +26,13 @@ const DepartmentCard = ({ department }: departmentCardProps) => {
     };
     getEmployees();
   }, []);
+  const handleDelete = async () => {
+    const response = await axios.post(
+      "http://localhost/EmployeeManagementsystem/index.php/department/delete",
+      { id: department.id }
+    );
+    window.location.reload();
+  };
   const DeleteMenu = () => {
     return (
       <div className={styles.delete_container}>
@@ -37,7 +44,9 @@ const DepartmentCard = ({ department }: departmentCardProps) => {
           >
             Cancel
           </button>
-          <button className={styles.delete_button}>Delete</button>
+          <button className={styles.delete_button} onClick={handleDelete}>
+            Delete
+          </button>
         </div>
       </div>
     );
