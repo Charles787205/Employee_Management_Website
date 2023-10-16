@@ -1,0 +1,176 @@
+:root {
+  --primary: #52126e;
+  --primary-hover: #6a1d8b;
+  --secondary: #e3f1ac;
+  --accent: #4ab41d;
+  --accent-hover: #3f9718;
+  --background: #e9e5fb;
+  --text: #070416;
+  --shadow: 0px 1px 10px 2px rgba(31, 30, 30, 0.371);
+  --danger: rgb(214, 51, 51);
+  --danger-hover: rgb(136, 31, 31);
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  color: var(--text);
+}
+body {
+  background-color: var(--background);
+}
+li {
+  list-style-type: none;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  height: 50px;
+  box-shadow: 5px 5px 5px rgba(49, 49, 49, 0.171);
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  background-color: var(--background);
+}
+nav ul {
+  display: flex;
+}
+
+main {
+  display: flex;
+  min-width: 100%;
+}
+a {
+  text-decoration: none;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav_link {
+  padding: 1rem;
+  cursor: pointer;
+  transition: ease-in-out 300ms;
+}
+.nav_link:hover {
+  background-color: var(--text);
+  color: var(--background);
+}
+
+.main_container {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  overflow: auto;
+}
+
+.side-panel {
+  min-height: calc(100vh - 50px);
+  background-color: var(--primary);
+  min-width: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 5px 0px 5px rgba(31, 30, 30, 0.371);
+  position: sticky;
+  bottom: 0px;
+  top: 50px;
+  left: 0px;
+  max-height: calc(100vh - 500px);
+}
+.side-panel h2 {
+  color: var(--background);
+  margin: 15px 0;
+}
+.side-panel .profile-pic {
+  margin: 15px 0;
+  cursor: pointer;
+}
+.side-panel ul {
+  width: 100%;
+}
+.side-panel li {
+  color: var(--background);
+  transition: ease-in-out 300ms;
+  padding: 2rem 0;
+  min-width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+.side-panel li:hover {
+  background-color: var(--background);
+  color: var(--primary);
+}
+
+/* Employee Card */
+
+/* Add employee */
+
+.add-employee-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.add-employee-container form {
+  padding: 4rem;
+  min-height: 80%;
+  border-radius: 10px;
+  background-color: var(--primary);
+  box-shadow: 0px 1px 6px rgba(31, 30, 30, 0.371);
+  display: flex;
+  flex-direction: column;
+}
+.add-employee-container form h2 {
+  color: var(--background);
+  margin-bottom: 3rem;
+}
+.add-employee-container form label {
+  color: var(--background);
+}
+
+.add-employee-container form input,
+select {
+  color: var(--text);
+  border: none;
+  margin: 1rem 10px;
+  font-size: 15px;
+  padding: 3px 0;
+  border-radius: 2px;
+  width: 90%;
+  margin-left: auto;
+  max-width: 350px;
+}
+.add-employee-container form input:focus,
+select:focus {
+  outline: 3px solid var(--accent);
+}
+.add-employee-container form .row {
+  align-items: center;
+  gap: 2rem;
+}
+.add-employee-container form button {
+  padding: 5px 40px;
+  background-color: var(--secondary);
+  border-radius: 5px;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: auto;
+  margin-bottom: 0px;
+}
+
+.add-employee-container form button:hover {
+  color: var(--text);
+  background-color: var(--background);
+}
+.input_error {
+  outline: 3px solid red;
+  color: red;
+}
