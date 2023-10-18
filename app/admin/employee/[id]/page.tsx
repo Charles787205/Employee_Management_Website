@@ -36,7 +36,7 @@ const page = ({ params }: { params: { id: number } }) => {
       "http://localhost/EmployeeManagementsystem/index.php/employee/delete",
       { id: id }
     );
-    window.location.href = "/";
+    window.location.href = "/admin/employee";
   };
 
   const DeleteMenu = () => {

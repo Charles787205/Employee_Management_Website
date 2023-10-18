@@ -114,6 +114,7 @@ a {
   color: var(--background);
   margin: 15px 0;
   max-width: 200px;
+  font-size: 20px;
 }
 .side-panel .profile-pic {
   margin: 15px 0;

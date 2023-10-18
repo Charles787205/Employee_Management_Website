@@ -1,16 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { SidePanel, EmployeeList, Department } from "@/components";
+import { SidePanel } from "@/components";
 import { redirect } from "next/navigation";
-import { BuiltInProviderType } from "next-auth/providers/index";
-import {
-  useSession,
-  getProviders,
-  LiteralUnion,
-  ClientSafeProvider,
-} from "next-auth/react";
-
-import React from "react";
+import { useSession } from "next-auth/react";
+import { getEmployeeByEmail } from "@/utils";
 
 export default function AdminLayout({
   children,
@@ -18,10 +11,11 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const { data: session } = useSession();
-
+  const [isSuccess, setIsSuccess] = useState(true);
   if (session === null) {
     redirect("/");
   }
+
   return (
     <div className="row">
       <SidePanel handleClick={() => {}} />
