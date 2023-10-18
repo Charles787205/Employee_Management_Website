@@ -8,7 +8,7 @@ import { employee as employeeType } from "@/types";
 
 import Link from "next/link";
 import { redirect } from "next/navigation";
-
+import { useRouter } from "next/navigation";
 type error = {
   errorMessage: null | string;
   errorType: null | string;
@@ -23,7 +23,7 @@ const EmployeeForm = ({ employee }: employeeFormProps) => {
 
   const { register, setValue, handleSubmit } = useForm();
   const [error, setError] = useState<error>();
-
+  const [isSubmit, setIsSubmit] = useState(false);
   useEffect(() => {
     const getDepartments = async () => {
       const response = await axios.get(
@@ -35,6 +35,9 @@ const EmployeeForm = ({ employee }: employeeFormProps) => {
     getDepartments();
   }, []);
 
+  if (isSubmit) {
+    redirect("/admin/employee");
+  }
   const onInsert = async (data: {}) => {
     const config = {
       headers: { "Content-type": "application/json" },
@@ -46,8 +49,8 @@ const EmployeeForm = ({ employee }: employeeFormProps) => {
         data,
         config
       );
+      console.log(response);
       setError({ errorMessage: null, errorType: null });
-      window.location.href = "/admin/employee";
     } catch (err) {
       if (err instanceof AxiosError) {
         const error: error = {
@@ -57,6 +60,7 @@ const EmployeeForm = ({ employee }: employeeFormProps) => {
         setError(error);
       }
     }
+    setIsSubmit(true);
   };
 
   if (employee) {
@@ -90,7 +94,7 @@ const EmployeeForm = ({ employee }: employeeFormProps) => {
         setError(error);
       }
     }
-    window.location.href = "/admin/employee";
+    setIsSubmit(true);
   };
 
   return (
@@ -172,13 +176,7 @@ const EmployeeForm = ({ employee }: employeeFormProps) => {
             {...register("salaryRate", { required: true })}
           />
         </div>
-        <div className="row">
-          <label>Password</label>
-          <input
-            type="password"
-            {...register("password", { required: true })}
-          />
-        </div>
+
         <div className="row">
           <label>Birth Date:</label>
           <input type="date" {...register("birthDate", { required: true })} />

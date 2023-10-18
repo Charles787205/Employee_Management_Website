@@ -18,12 +18,11 @@ model Employee  {
   gender Gender
   mobileNumber String
   salaryRate Float
-  password String
   position String
   email String @unique
   department Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
   departmentId Int
-
+  image String? 
 }
 model Department {
   id Int @id @default(autoincrement())

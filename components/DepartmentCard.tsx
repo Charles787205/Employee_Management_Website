@@ -6,8 +6,9 @@ import axios from "axios";
 import EmployeeTable from "./EmployeeTable";
 type departmentCardProps = {
   department: department;
+  handleDelete: Function;
 };
-const DepartmentCard = ({ department }: departmentCardProps) => {
+const DepartmentCard = ({ department, handleDelete }: departmentCardProps) => {
   const [isOpened, setIsOpened] = useState(false);
   const [employees, setEmployees] = useState<employee[]>([]);
   const [isDelete, setIsDelete] = useState(false);
@@ -26,13 +27,7 @@ const DepartmentCard = ({ department }: departmentCardProps) => {
     };
     getEmployees();
   }, []);
-  const handleDelete = async () => {
-    const response = await axios.post(
-      "http://localhost/EmployeeManagementsystem/index.php/department/delete",
-      { id: department.id }
-    );
-    window.location.reload();
-  };
+
   const DeleteMenu = () => {
     return (
       <div className={styles.delete_container}>
@@ -44,7 +39,10 @@ const DepartmentCard = ({ department }: departmentCardProps) => {
           >
             Cancel
           </button>
-          <button className={styles.delete_button} onClick={handleDelete}>
+          <button
+            className={styles.delete_button}
+            onClick={() => handleDelete(department.id)}
+          >
             Delete
           </button>
         </div>

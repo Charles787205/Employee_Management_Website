@@ -7,10 +7,11 @@ CREATE TABLE `Employee` (
     `gender` ENUM('MALE', 'FEMALE', 'OTHER') NOT NULL,
     `mobileNumber` VARCHAR(191) NOT NULL,
     `salaryRate` DOUBLE NOT NULL,
-    `password` VARCHAR(191) NOT NULL,
     `position` VARCHAR(191) NOT NULL,
+    `email` VARCHAR(191) NOT NULL,
     `departmentId` INTEGER NOT NULL,
 
+    UNIQUE INDEX `Employee_email_key`(`email`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

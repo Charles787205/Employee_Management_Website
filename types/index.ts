@@ -9,6 +9,7 @@ export type employee = {
   mobileNumber: string;
   salaryRate: number;
   department: string;
+  image?: string;
 };
 
 export type employeeCardProps = {

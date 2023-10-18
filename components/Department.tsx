@@ -11,13 +11,13 @@ const Department = () => {
   ]);
   const [departmentName, setDepartmentName] = useState("");
 
+  const getDepartments = async () => {
+    const response = await axios.get(
+      "http://localhost/EmployeeManagementsystem/index.php/department/list"
+    );
+    setDepartments(response.data);
+  };
   useEffect(() => {
-    const getDepartments = async () => {
-      const response = await axios.get(
-        "http://localhost/EmployeeManagementsystem/index.php/department/list"
-      );
-      setDepartments(response.data);
-    };
     getDepartments();
   }, []);
 
@@ -32,8 +32,17 @@ const Department = () => {
         { name: departmentName },
         { headers: { "Content-type": "application/json" }, method: "no-cors" }
       );
-      console.log(response);
+      setDepartmentName("");
+      getDepartments();
     } catch (e) {}
+  };
+
+  const handleDelete = async (id: number) => {
+    const response = await axios.post(
+      "http://localhost/EmployeeManagementsystem/index.php/department/delete",
+      { id: id }
+    );
+    getDepartments();
   };
   return (
     <div className={styles.department_container}>
@@ -55,7 +64,11 @@ const Department = () => {
         </form>
       </div>
       {departments.map((department) => (
-        <DepartmentCard key={department.id} department={department} />
+        <DepartmentCard
+          key={department.id}
+          handleDelete={handleDelete}
+          department={department}
+        />
       ))}
     </div>
   );

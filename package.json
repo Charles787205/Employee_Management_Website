@@ -13,6 +13,7 @@
     "axios": "^1.5.1",
     "jquery": "^3.7.1",
     "next": "13.5.4",
+    "next-auth": "^4.23.2",
     "object-to-formdata": "^4.5.1",
     "prisma": "^5.4.2",
     "react": "^18",

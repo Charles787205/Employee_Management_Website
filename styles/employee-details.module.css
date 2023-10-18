@@ -103,3 +103,6 @@
 .cancel_button:hover {
   background-color: #2f7711;
 }
+.profile_pic {
+  border-radius: 50%;
+}

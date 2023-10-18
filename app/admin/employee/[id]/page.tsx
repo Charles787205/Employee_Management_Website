@@ -6,6 +6,7 @@ import styles from "@/styles/employee-details.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const page = ({ params }: { params: { id: number } }) => {
   const id = params.id;
@@ -64,7 +65,13 @@ const page = ({ params }: { params: { id: number } }) => {
   return (
     <div className={styles.main_container}>
       <div className={styles.detail_container}>
-        <Image src="/profile.png" height={200} width={200} alt="profile pic" />
+        <Image
+          src={employee?.image || "/profile.png"}
+          height={150}
+          width={150}
+          alt="profile pic"
+          className={styles.profile_pic}
+        />
         <h2>
           {employee?.firstName} {employee?.lastName}
         </h2>

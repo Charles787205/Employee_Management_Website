@@ -25,8 +25,7 @@ const UpdatePage = ({ params }: { params: { id: number } }) => {
   }, []);
 
   return (
-    <div>
-      <h1>{employee?.id}</h1>
+    <div className="container">
       <EmployeeForm employee={employee} />
     </div>
   );
