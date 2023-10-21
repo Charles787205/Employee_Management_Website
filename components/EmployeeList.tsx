@@ -5,22 +5,7 @@ import { employee } from "@/types";
 import styles from "@/styles/employeeList.module.css";
 import EmployeeTable from "./EmployeeTable";
 import axios from "axios";
-/*
-const employees = [
-  {
-    id: 1,
-    firstName: "John",
-    lastName: "Doe",
-    email: "johndoe@gmail.com",
-    birthdate: "10/12/--",
-    position: "data analyst",
-    gender: "MALE",
-    mobileNumber: "09123456789",
-    salaryRate: 70,
-    department: "ACCOUNTING",
-  },
-];
-*/
+
 const EmployeeList = () => {
   const [employees, setEmployees] = useState<employee[]>([]);
   useEffect(() => {
